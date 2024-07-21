@@ -1,0 +1,22 @@
+.sidebar-left {
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+}
+.sidebar-left .user-img {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.sidebar-left svg {
+  margin: 0.15rem;
+  padding: 0.15rem;
+}
+.sidebar-left p {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.sidebar-left:hover {
+  background-color: rgb(211, 211, 211);
+}

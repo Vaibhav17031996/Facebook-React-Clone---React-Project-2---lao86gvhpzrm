@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  margin-bottom: 100px;
+  background-color: white;
+  color: black;
+}
+
+.App.dark-mode {
+  background-color: rgb(25, 25, 25);
+  columns: white;
 }
 
 .App-logo {

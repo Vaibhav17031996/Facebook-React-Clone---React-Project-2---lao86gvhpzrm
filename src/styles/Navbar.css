@@ -1,0 +1,89 @@
+.navbar {
+  display: flex;
+  padding: 5px 20px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  justify-content: space-between;
+  box-shadow: 0px 0px 3px #ccc;
+}
+.navbar.dark-mode {
+  background-color: rgb(100, 100, 100);
+  color: white;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+.navbar-left img {
+  height: 40px;
+  cursor: pointer;
+}
+.navbar-search {
+  display: flex;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  padding: 0px 10px;
+  height: 40px;
+  margin-left: 20px;
+}
+.navbar-search input {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  min-width: 200px;
+}
+.navbar-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-option {
+  padding: 5px 40px;
+  cursor: pointer;
+}
+.navbar-option:hover {
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+.navbar-option svg {
+  color: grey;
+}
+.navbar-option svg:hover {
+  color: #2381fa;
+}
+.navbar-option-active svg {
+  color: #2381fa;
+}
+/* .navbar-option-active ::after {
+  content: "";
+  height: 3px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  background-color: #2381fa;
+} */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+.navbar-right-option {
+  padding: 5px 5px;
+  cursor: pointer;
+}
+/* .navbar-user {
+  display: flex;
+  align-items: center;
+} */
+.navbar-right .MuiSvgIcon-root {
+  width: 40px;
+  height: 40px;
+  margin: 0px 5px;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 50%;
+}

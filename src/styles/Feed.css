@@ -1,0 +1,40 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 30px 150px;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  /* flex item will grow to take up any remaining space equally with other flex items that have the same flex-grow value. */
+
+  /* flex is used to define how a flex item will grow, shrink, and how much space it should take up in the flex container. When you use flex: 1;, it is a shorthand for: 
+    flex: 1 1 0%; => i.e. flex-grow, flex-shrink, flex-basis;
+    flex-basis: 0%; means the initial size of the flex item is based on its content but can grow or shrink to fill the container space */
+}
+
+.feed.dark-mode {
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+.pagination {
+  margin: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination > span {
+  padding: 15px 20px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.pagination_selected {
+  background-color: rgb(220, 220, 220);
+}
+
+.pagination_disabled {
+  opacity: 0;
+}

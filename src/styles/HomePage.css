@@ -1,0 +1,21 @@
+.home-body {
+  display: flex;
+}
+
+.pagination_selected {
+  background-color: rgb(220, 220, 220);
+}
+
+.pagination_disabled {
+  opacity: 0;
+}
+
+.liked {
+  background-color: red;
+  color: white;
+}
+
+.not-liked {
+  background-color: gray;
+  color: black;
+}
