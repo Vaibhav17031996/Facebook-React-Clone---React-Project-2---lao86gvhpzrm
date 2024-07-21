@@ -14,14 +14,12 @@ import { useAuth } from "../context/AuthContext";
 
 function Sidebar({ toggleDarkMode, darkMode }) {
   const { user } = useAuth();
-  // const user = JSON.parse(localStorage.getItem("user"));
   console.log(user.name);
   return (
     <div className={darkMode ? "sidebar dark-mode" : "sidebar"}>
       <SidebarOptions
         src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
         title={user.name}
-        // title="Vaibhav"
       />
       <SidebarOptions Icon={Diversity3Icon} title="Friends" />
       <SidebarOptions Icon={AccessTimeIcon} title="Memories" />

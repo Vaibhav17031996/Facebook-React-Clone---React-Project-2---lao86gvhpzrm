@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import "../styles/SignupPage.css";
 
 function SignupPage() {
-  const { signup } = useAuth(); // This line uses destructuring to extract the signup function from the object returned by useAuth()
+  const { signup } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

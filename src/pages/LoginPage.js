@@ -12,37 +12,6 @@ function Login() {
 
   const projectId = "f104bi07c490";
 
-  /* const handleLogin = async () => {
-    try {
-      const response = await fetch(
-        "https://academics.newtonschool.co/api/v1/user/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            projectID: projectId,
-          },
-          body: JSON.stringify({
-            email,
-            password,
-            appType: "facebook",
-          }),
-        }
-      );
-      const data = await response.json();
-      if (data.token) {
-        setToken(data.token);
-        localStorage.setItem("token", data.token);
-        navigate("/");
-      } else {
-        alert("Login failed!");
-        console.log("failed");
-      }
-    } catch (error) {
-      console.error("Error logging in: ", error);
-    }
-  }; */
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {

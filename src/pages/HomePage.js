@@ -8,7 +8,6 @@ import { useAuth } from "../context/AuthContext";
 
 function HomePage({ toggleDarkMode, darkMode }) {
   const { user } = useAuth();
-  // const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
   const token = localStorage.getItem("token");
   return (

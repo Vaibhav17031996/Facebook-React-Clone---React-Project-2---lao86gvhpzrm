@@ -103,37 +103,29 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
         <div className="navbar-right-option">
           <ArrowDropDownCircleIcon onClick={handleProfileMenuOpen} />
         </div>
-        {
-          token ? (
-            <>
-              <Menu
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem onClick={handleProfilePageAndOpenModal}>
-                  Profile
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                <MenuItem onClick={handleToggleDarkModeAndCloseMenu}>
-                  Toggle Dark Mode
-                </MenuItem>
-              </Menu>
-              {/* <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        {token ? (
+          <>
+            <Menu
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+            >
+              <MenuItem onClick={handleProfilePageAndOpenModal}>
+                Profile
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              <MenuItem onClick={handleToggleDarkModeAndCloseMenu}>
+                Toggle Dark Mode
+              </MenuItem>
+            </Menu>
+            {/* <Modal open={openModal} onClose={() => setOpenModal(false)}>
                 <ProfilePage />
               </Modal> */}
-            </>
-          ) : (
-            ""
-          )
-          /* (
-            <Link to="/login">
-              <Avatar />
-            </Link>
-            // <Link to="/login"><Avatar alt={user.name} src={user.avatar}/></Link>
-          ) */
-        }
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

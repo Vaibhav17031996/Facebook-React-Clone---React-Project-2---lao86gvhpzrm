@@ -24,9 +24,6 @@ function CreatePost() {
     setOpen(true);
   };
 
-  // const handleFileChange = (e) => {
-  //   setMedia(e.target.files[0]);
-  // };
   const handleIconClick = () => {
     fileInputRef.current.click();
   };
@@ -34,20 +31,17 @@ function CreatePost() {
   const handleFileChange = (event) => {
     const files = event.target.files;
     console.log(files);
-    // Handle the selected files
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create form data
     const formData = new FormData();
     formData.append("content", content);
     if (media) {
       formData.append("media", media);
     }
 
-    // Send the post data to the server
     try {
       const response = await fetch(
         "https://academics.newtonschool.co/api/v1/facebook/post",
@@ -76,7 +70,6 @@ function CreatePost() {
 
   return (
     <>
-      {/* Modal is coming from material UI */}
       <Modal open={open} onClose={handleClose}>
         <div className="modal-popup">
           <div className="modal-heading">

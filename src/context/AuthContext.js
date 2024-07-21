@@ -13,16 +13,12 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Load user from localStorage if available
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
     console.log(typeof user === "object");
     if (typeof user === "object") {
       setUser(user);
     }
-    // if (user) {
-    //   setUser(JSON.parse(user));
-    // }
   }, []);
 
   const login = async (email, password) => {
@@ -54,8 +50,8 @@ export function AuthProvider({ children }) {
         alert("Login failed");
       }
     } catch (error) {
-      console.log(error);
-      // alert("Error occured during login");
+      // console.log(error);
+      alert("Error occured during login");
     }
   };
 

@@ -8,7 +8,6 @@ const projectId = "f104bi07c490";
 const ProfilePage = ({ toggleDarkMode, darkMode }) => {
   const token = localStorage.getItem("token");
   const { user } = useAuth();
-  // const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
   const [profile, setProfile] = useState(null);
 

@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Navigate,
-// } from "react-router-dom";
 import "../styles/Feed.css";
 import Story from "../components/Story";
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
 import Search from "./Search";
-// import Login from "./Login";
-// import Signup from "./Signup";
 
 const projectId = "f104bi07c490";
 
@@ -21,13 +13,6 @@ function Feed({ toggleDarkMode, darkMode, token }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [filteredPosts, setFilteredPosts] = useState([]);
-  // const [token, setToken] = useState(localStorage.getItem("token"));
-
-  // useEffect(() => {
-  //   if (!token) {
-  //     localStorage.removeItem("token");
-  //   }
-  // }, [token]);
 
   const fetchPosts = async () => {
     if (loading) return;
@@ -92,9 +77,9 @@ function Feed({ toggleDarkMode, darkMode, token }) {
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        filteredPosts
-          // .slice(page * 10 - 10, page * 10)
-          .map((post) => <Post key={post._id} post={post} token={token} />)
+        filteredPosts.map((post) => (
+          <Post key={post._id} post={post} token={token} />
+        ))
       )}
 
       {posts.length > 0 && (
