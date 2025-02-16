@@ -10,6 +10,13 @@ function HomePage({ toggleDarkMode, darkMode }) {
   const { user } = useAuth();
   console.log(user);
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user]);
+
   return (
     <>
       {user && (

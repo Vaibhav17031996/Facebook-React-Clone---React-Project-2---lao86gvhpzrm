@@ -8,7 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useAuth } from "../context/AuthContext";
 
-function CreatePost() {
+function CreatePost({ darkMode, addNewPost }) {
   const { user } = useAuth();
   console.log(user);
   const [open, setOpen] = useState(false);
@@ -49,12 +49,14 @@ function CreatePost() {
           method: "POST",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
+            projectID: "f104bi07c490",
           },
           body: formData,
         }
       );
 
       const result = await response.json();
+      console.log(result);
       if (response.ok) {
         alert("Post created successfully");
         setContent("");
@@ -68,8 +70,41 @@ function CreatePost() {
     }
   };
 
+  const handlePostSubmit = async () => {
+    if (!content.trim()) {
+      alert("Post content cannot be empty!");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://academics.newtonschool.co/api/v1/facebook/post/",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            projectID: "f104bi07c490",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: content }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+      if (data.success) {
+        addNewPost(data.data); // Update the parent component with the new post
+        setContent("");
+      } else {
+        alert("Failed to create post!");
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
   return (
-    <>
+    <div className={darkMode ? "createpost dark-mode" : "createpost"}>
       <Modal open={open} onClose={handleClose}>
         <div className="modal-popup">
           <div className="modal-heading">
@@ -104,11 +139,13 @@ function CreatePost() {
                   onChange={handleFileChange}
                 />
                 <PhotoLibraryIcon
+                  className="modal-footer-right-photo-icon"
                   fontSize="large"
                   style={{ color: "green" }}
                   onClick={handleIconClick}
                 />
                 <EmojiEmotionsIcon
+                  className="modal-footer-right-emoji-icon"
                   fontSize="large"
                   style={{ color: "#ffb100" }}
                 />
@@ -116,12 +153,14 @@ function CreatePost() {
               </IconButton>
             </div>
           </div>
-          <input
+          <button
             type="submit"
             className="post-submit"
             value="Post"
             onClick={handleSubmit}
-          />
+          >
+            Post
+          </button>
         </div>
       </Modal>
       <div className="create-post">
@@ -141,7 +180,18 @@ function CreatePost() {
             <p>Live Video</p>
           </div>
           <div className="create-post-options">
-            <PhotoLibraryIcon style={{ color: "green" }} fontSize="large" />
+            <input
+              type="file"
+              accept="image/*,video/*"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+            <PhotoLibraryIcon
+              style={{ color: "green" }}
+              fontSize="large"
+              onClick={handleIconClick}
+            />
             <p>Photo/Video</p>
           </div>
           <div className="create-post-options">
@@ -150,7 +200,7 @@ function CreatePost() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

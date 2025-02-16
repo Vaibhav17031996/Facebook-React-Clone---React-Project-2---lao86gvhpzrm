@@ -22,6 +22,7 @@ function Feed({ toggleDarkMode, darkMode, token }) {
         `https://academics.newtonschool.co/api/v1/facebook/post?limit=10&page=${page}`,
         {
           headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             projectID: projectId,
           },
         }
@@ -46,6 +47,36 @@ function Feed({ toggleDarkMode, darkMode, token }) {
     fetchPosts();
   }, [page]);
 
+  const addNewPost = (newPost) => {
+    // setPosts([newPost, ...posts]); // Add new post to the top
+    setPosts((prevPosts) => [newPost, ...prevPosts]); // New post appears on top
+  };
+
+  const deletePost = async (postId) => {
+    try {
+      const response = await fetch(
+        `https://academics.newtonschool.co/api/v1/facebook/post/${postId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            projectID: "f104bi07c490",
+          },
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error("Failed to delete post");
+      }
+  
+      // ✅ Remove the post from UI after deletion
+      setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId));
+  
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
   const selectPageHandler = (selectedPage) => {
     if (
       selectedPage >= 1 &&
@@ -69,16 +100,30 @@ function Feed({ toggleDarkMode, darkMode, token }) {
   return (
     <div className={darkMode ? "feed dark-mode" : "feed"}>
       <Story />
-      <CreatePost />
-      <Search onSearch={handleSearch} />
+      <CreatePost
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode}
+        addNewPost={addNewPost}
+      />
+      <Search
+        onSearch={handleSearch}
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode}
+      />
 
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        filteredPosts.map((post) => (
-          <Post key={post._id} post={post} token={token} />
+        posts.map((post) => (
+          <Post
+            key={post._id}
+            post={post}
+            token={token}
+            toggleDarkMode={toggleDarkMode}
+            deletePost = {deletePost}
+          />
         ))
       )}
 

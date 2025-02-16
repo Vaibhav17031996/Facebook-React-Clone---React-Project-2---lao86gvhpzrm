@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Search.css";
 import SearchIcon from "@mui/icons-material/Search";
 
-function Search({ onSearch }) {
+function Search({ onSearch, darkMode }) {
   const [searchText, setSearchText] = useState("");
 
   const handleSearchInputChange = (event) => {
@@ -13,7 +13,7 @@ function Search({ onSearch }) {
   };
 
   return (
-    <div className="search">
+    <div className={darkMode ? "search dark-mode" : "search"}>
       <SearchIcon style={{ padding: 10 }} />
       <input
         type="text"

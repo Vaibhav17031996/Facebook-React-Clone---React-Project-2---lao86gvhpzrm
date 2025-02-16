@@ -15,7 +15,7 @@ import { Avatar, Menu, MenuItem } from "@mui/material";
 import { Search, AccountCircle } from "@mui/icons-material";
 import "../styles/Navbar.css";
 import ProfilePage from "../pages/ProfilePage";
-import Modal from "./Modal.js";
+// import Modal from "./Modal.js";
 // import Modal from "@mui/material/Modal";
 
 function Navbar({ toggleDarkMode, darkMode, token }) {

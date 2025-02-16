@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CommentIcon from "@mui/icons-material/Comment";
 import ShareIcon from "@mui/icons-material/Share";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "../styles/Post.css";
 
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjRjN2U5ZWJmY2ZiM2YyYmYwMTQ0NCIsImlhdCI6MTcxMzY4NjUwNSwiZXhwIjoxNzQ1MjIyNTA1fQ.IO2-UKaz1CASUB62DSwh2_uoIVRgBp7HINE_cr63siE";
 const projectId = "f104bi07c490";
 
-function Post({ post, token }) {
+function Post({ post, token, deletePost }) {
   const [likes, setLikes] = useState(post.likeCount);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -127,15 +128,21 @@ function Post({ post, token }) {
 
       <div className="post-interactions">
         <FavoriteIcon
+          className="post-interactions-icon"
           onClick={handleLike}
           sx={{ color: liked ? "red" : "grey" }}
         />
         <CommentIcon
+          className="post-interactions-icon"
           onClick={() => {
             fetchComments(post._id);
           }}
         />
-        <ShareIcon />
+        <ShareIcon className="post-interactions-icon" />
+        <DeleteIcon
+          className="post-interactions-icon"
+          onClick={() => deletePost(post._id)}
+        />
       </div>
       {showComments && (
         <div className="comments-section">

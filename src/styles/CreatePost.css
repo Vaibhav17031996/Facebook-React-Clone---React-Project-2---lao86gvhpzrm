@@ -9,6 +9,10 @@
   border-radius: 10px;
   box-sizing: border-box;
 }
+.createpost.dark-mode {
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
 .create-post-top {
   display: flex;
   align-items: center;
@@ -41,7 +45,7 @@
   margin-top: 10px;
 }
 .create-post-options:hover {
-  background-color: whitesmoke;
+  background-color: #ebeaea;
   cursor: pointer;
 }
 .modal-popup {
@@ -104,6 +108,17 @@
   border-radius: 10px;
   padding: 0 10px;
   margin-bottom: 20px;
+}
+.modal-footer-right{
+    display: flex;
+    align-items: center;
+    padding: 2px 10px;
+}
+.modal-footer-right-photo-icon{
+    padding: 0 10px;
+}
+.modal-footer-right-emoji-icon{
+    padding: 0 10px;
 }
 .post-submit {
   width: 100%;

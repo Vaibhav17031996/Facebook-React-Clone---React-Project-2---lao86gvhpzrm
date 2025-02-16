@@ -98,6 +98,16 @@
   justify-content: space-around;
 }
 
+.post-interactions-icon{
+  padding: 8px 50px;
+  cursor: pointer;
+}
+
+.post-interactions-icon:hover {
+  background-color: #dfdcdc;
+  cursor: pointer;
+}
+
 /* .liked {
   background-color: red;
   color: red;
