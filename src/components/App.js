@@ -15,12 +15,13 @@ function App() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-  
+
   return (
     <Router>
       <AuthProvider>
         <div className={darkMode ? "App dark-mode" : "App"}>
           <Routes>
+            <Route path="/" element={<LoginPage />} />
             <Route
               path="/profile"
               element={
@@ -36,7 +37,6 @@ function App() {
                 <HomePage toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
               }
             />
-            <Route path="/" element={<LoginPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/signup" element={<SignupPage />} />

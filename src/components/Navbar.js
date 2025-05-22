@@ -6,7 +6,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import GroupsIcon from "@mui/icons-material/Groups";
-
 import MessageIcon from "@mui/icons-material/Message";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -15,12 +14,9 @@ import { Avatar, Menu, MenuItem } from "@mui/material";
 import { Search, AccountCircle } from "@mui/icons-material";
 import "../styles/Navbar.css";
 import ProfilePage from "../pages/ProfilePage";
-// import Modal from "./Modal.js";
-// import Modal from "@mui/material/Modal";
 
 function Navbar({ toggleDarkMode, darkMode, token }) {
   const { user, logout } = useAuth();
-  // const { logout } = useAuth();
   // const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
   const navigate = useNavigate();
@@ -77,13 +73,22 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
           />
         </div>
         <div className="navbar-option">
-          <OndemandVideoIcon fontSize="large" />
+          <OndemandVideoIcon
+            fontSize="large"
+            onClick={() => alert("Video icon clicked!")}
+          />
         </div>
         <div className="navbar-option">
-          <StorefrontIcon fontSize="large" />
+          <StorefrontIcon
+            fontSize="large"
+            onClick={() => alert("Store icon clicked!")}
+          />
         </div>
         <div className="navbar-option">
-          <GroupsIcon fontSize="large" />
+          <GroupsIcon
+            fontSize="large"
+            onClick={() => alert("Groups icon clicked!")}
+          />
         </div>
       </div>
 
@@ -97,9 +102,6 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
         <div className="navbar-right-option">
           <CircleNotificationsIcon />
         </div>
-        {/* <div className="navbar-right-option navbar-user">
-            <AccountCircleIcon />
-          </div> */}
         <div className="navbar-right-option">
           <ArrowDropDownCircleIcon onClick={handleProfileMenuOpen} />
         </div>
@@ -119,9 +121,6 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
                 Toggle Dark Mode
               </MenuItem>
             </Menu>
-            {/* <Modal open={openModal} onClose={() => setOpenModal(false)}>
-                <ProfilePage />
-              </Modal> */}
           </>
         ) : (
           ""
@@ -132,3 +131,4 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
 }
 
 export default Navbar;
+

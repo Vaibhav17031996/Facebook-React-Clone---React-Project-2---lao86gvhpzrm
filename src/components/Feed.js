@@ -31,9 +31,6 @@ function Feed({ toggleDarkMode, darkMode, token }) {
         throw new Error("Error fetching the api");
       }
       const data = await response.json();
-      console.log("vaib");
-      console.log(data.data);
-      console.log(posts.length);
       // setPosts((prevPosts) => [...prevPosts, ...data.data]);
       setPosts(data.data);
       setFilteredPosts(data.data); // Initialize filteredPosts with all posts

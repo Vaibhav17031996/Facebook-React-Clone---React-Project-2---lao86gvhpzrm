@@ -14,8 +14,8 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
-    console.log(typeof user === "object");
+    // console.log(user);
+    // console.log(typeof user === "object");
     if (typeof user === "object") {
       setUser(user);
     }
@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
           body: loginDetails,
         }
       );
-      console.log(loginDetails);
+      // console.log(loginDetails);
       const userData = await response.json();
       if (userData.token) {
         setUser(userData.data.user);
@@ -83,7 +83,7 @@ export function AuthProvider({ children }) {
       if (!response.ok) {
         throw new Error("Signup response failed");
       }
-
+      
       const userData = await response.json();
       if (userData.token) {
         setUser(userData.data.user);
