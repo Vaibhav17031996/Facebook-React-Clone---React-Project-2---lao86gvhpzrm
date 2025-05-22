@@ -83,12 +83,12 @@ function Feed({ toggleDarkMode, darkMode, token }) {
       setPage(selectedPage);
   };
 
-  const handleSearch = (query) => {
-    if (!query) {
+  const handleSearch = (value) => {
+    if (!value) {
       setFilteredPosts(posts);
     } else {
       const filtered = posts.filter((post) =>
-        post.content.toLowerCase().includes(query.toLowerCase())
+        post.content.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredPosts(filtered);
     }

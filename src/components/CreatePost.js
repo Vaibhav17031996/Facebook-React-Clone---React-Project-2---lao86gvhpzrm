@@ -25,7 +25,7 @@ function CreatePost({ darkMode, addNewPost }) {
   };
 
   const handleIconClick = () => {
-    fileInputRef.current.click();
+    fileInputRef.current?.click();
   };
 
   const handleFileChange = (event) => {
