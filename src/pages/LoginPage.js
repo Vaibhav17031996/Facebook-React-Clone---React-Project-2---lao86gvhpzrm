@@ -54,7 +54,7 @@ function Login() {
           </form>
         </div>
         <div className="forgotPassword">
-          <a href="forgotPassword">Forgot password?</a>
+          <a href="signup">Forgot password?</a>
           <button className="newAccountBtn" onClick={() => navigate("/signup")}>
             Create a new account
           </button>

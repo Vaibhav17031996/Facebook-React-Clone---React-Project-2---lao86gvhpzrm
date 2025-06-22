@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
@@ -8,10 +9,10 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import GroupsIcon from "@mui/icons-material/Groups";
 import MessageIcon from "@mui/icons-material/Message";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { Avatar, Menu, MenuItem } from "@mui/material";
 import { Search, AccountCircle } from "@mui/icons-material";
+
 import "../styles/Navbar.css";
 import ProfilePage from "../pages/ProfilePage";
 
@@ -23,12 +24,18 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget); // event.currentTarget is the HTML element (usually a dropdown icon or button or avatar) that opens the menu.
+    // console.log(anchorEl);
+    // console.log(event);
   };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+  
+  const handleProfilePage = () => {
+    navigate("/profile");
   };
 
   const handleLogout = () => {
@@ -36,20 +43,9 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
     logout();
   };
 
-  const handleProfilePage = () => {
-    navigate("/profile");
-  };
-
   const handleToggleDarkModeAndCloseMenu = () => {
+    handleMenuClose();
     toggleDarkMode();
-    handleMenuClose();
-  };
-
-  const handleProfilePageAndOpenModal = () => {
-    setOpenModal(true);
-    // {openModal && <Modal setOpenModal={setOpenModal} />;}
-    handleMenuClose();
-    handleProfilePage();
   };
 
   return (
@@ -103,7 +99,7 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
           <CircleNotificationsIcon />
         </div>
         <div className="navbar-right-option">
-          <ArrowDropDownCircleIcon onClick={handleProfileMenuOpen} />
+          <ArrowDropDownCircleIcon onClick={handleMenuOpen} />
         </div>
         {token ? (
           <>
@@ -113,7 +109,7 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
               open={Boolean(anchorEl)}
               onClose={handleMenuClose}
             >
-              <MenuItem onClick={handleProfilePageAndOpenModal}>
+              <MenuItem onClick={handleProfilePage}>
                 Profile
               </MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
@@ -131,4 +127,3 @@ function Navbar({ toggleDarkMode, darkMode, token }) {
 }
 
 export default Navbar;
-
