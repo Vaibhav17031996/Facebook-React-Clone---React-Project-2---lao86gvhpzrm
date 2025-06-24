@@ -1,5 +1,8 @@
 import React from "react";
 import SidebarOptions from "./SidebarOptions";
+import "../styles/Sidebar.css";
+import { useAuth } from "../context/AuthContext";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -9,8 +12,6 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import FeedIcon from "@mui/icons-material/Feed";
 import AssistantIcon from "@mui/icons-material/Assistant";
-import "../styles/Sidebar.css";
-import { useAuth } from "../context/AuthContext";
 
 function Sidebar({ toggleDarkMode, darkMode }) {
   const { user } = useAuth();

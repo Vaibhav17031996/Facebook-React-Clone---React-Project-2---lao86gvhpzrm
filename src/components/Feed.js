@@ -45,8 +45,8 @@ function Feed({ toggleDarkMode, darkMode, token }) {
   }, [page]);
 
   const addNewPost = (newPost) => {
-    // setPosts([newPost, ...posts]); // Add new post to the top
     setPosts((prevPosts) => [newPost, ...prevPosts]); // New post appears on top
+    setFilteredPosts((prevFiltered) => [newPost, ...prevFiltered]);
   };
 
   const deletePost = async (postId) => {
@@ -61,14 +61,14 @@ function Feed({ toggleDarkMode, darkMode, token }) {
           },
         }
       );
-  
+
       if (!response.ok) {
         throw new Error("Failed to delete post");
       }
-  
+
       // ✅ Remove the post from UI after deletion
       setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId));
-  
+      setFilteredPosts((prev) => prev.filter((post) => post._id !== postId));
     } catch (error) {
       console.error("Error deleting post:", error);
     }
@@ -84,7 +84,7 @@ function Feed({ toggleDarkMode, darkMode, token }) {
   };
 
   const handleSearch = (value) => {
-    if (!value) {
+    if (!value.trim()) {
       setFilteredPosts(posts);
     } else {
       const filtered = posts.filter((post) =>
@@ -113,13 +113,13 @@ function Feed({ toggleDarkMode, darkMode, token }) {
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        posts.map((post) => (
+        filteredPosts.map((post) => (
           <Post
             key={post._id}
             post={post}
             token={token}
             toggleDarkMode={toggleDarkMode}
-            deletePost = {deletePost}
+            deletePost={deletePost}
           />
         ))
       )}
@@ -132,7 +132,7 @@ function Feed({ toggleDarkMode, darkMode, token }) {
           >
             ◀️
           </span>
-          {[...Array(posts.length)].map((_, i) => {
+          {[...Array(filteredPosts.length)].map((_, i) => {
             return (
               <span
                 className={page === i + 1 ? "pagination_selected" : ""}
@@ -144,8 +144,8 @@ function Feed({ toggleDarkMode, darkMode, token }) {
             );
           })}
           <span
-            onClick={() => selectPageHandler(page + 1)}
             className={page < posts.length ? "" : "pagination_disabled"}
+            onClick={() => selectPageHandler(page + 1)}
           >
             ▶️
           </span>

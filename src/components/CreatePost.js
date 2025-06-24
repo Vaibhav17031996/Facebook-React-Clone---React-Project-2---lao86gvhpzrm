@@ -10,18 +10,17 @@ import { useAuth } from "../context/AuthContext";
 
 function CreatePost({ darkMode, addNewPost }) {
   const { user } = useAuth();
-  console.log(user);
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState("");
   const [media, setMedia] = useState(null);
   const fileInputRef = useRef(null);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const handleIconClick = () => {
@@ -70,7 +69,7 @@ function CreatePost({ darkMode, addNewPost }) {
     }
   };
 
-  const handlePostSubmit = async () => {
+  /* const handlePostSubmit = async () => {
     if (!content.trim()) {
       alert("Post content cannot be empty!");
       return;
@@ -101,7 +100,7 @@ function CreatePost({ darkMode, addNewPost }) {
     } catch (error) {
       console.error("Error creating post:", error);
     }
-  };
+  }; */
 
   return (
     <div className={darkMode ? "createpost dark-mode" : "createpost"}>
@@ -130,27 +129,25 @@ function CreatePost({ darkMode, addNewPost }) {
               <h4>Add to your post</h4>
             </div>
             <div className="modal-footer-right">
-              <IconButton>
-                <input
-                  type="file"
-                  accept="image/*,video/*"
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-                <PhotoLibraryIcon
-                  className="modal-footer-right-photo-icon"
-                  fontSize="large"
-                  style={{ color: "green" }}
-                  onClick={handleIconClick}
-                />
-                <EmojiEmotionsIcon
-                  className="modal-footer-right-emoji-icon"
-                  fontSize="large"
-                  style={{ color: "#ffb100" }}
-                />
-                <MoreHorizIcon fontSize="large" />
-              </IconButton>
+              <input
+                type="file"
+                accept="image/*,video/*"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+              <PhotoLibraryIcon
+                className="modal-footer-right-photo-icon"
+                fontSize="large"
+                style={{ color: "green" }}
+                onClick={handleIconClick}
+              />
+              <EmojiEmotionsIcon
+                className="modal-footer-right-emoji-icon"
+                fontSize="large"
+                style={{ color: "#ffb100" }}
+              />
+              <MoreHorizIcon fontSize="large" />
             </div>
           </div>
           <button
@@ -169,7 +166,7 @@ function CreatePost({ darkMode, addNewPost }) {
           <form>
             <input
               type="text"
-              placeholder="What's on your mind, Vaibhav?"
+              placeholder={`What's on your mind, ${user?.name || "guest"}?`}
               onClick={handleOpen}
             />
           </form>

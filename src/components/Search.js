@@ -6,7 +6,7 @@ function Search({ onSearch, darkMode }) {
   const [searchText, setSearchText] = useState("");
 
   const handleSearchInputChange = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const value = event.target.value;
     setSearchText(value);
     onSearch(value);
